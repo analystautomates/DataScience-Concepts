@@ -1,0 +1,21 @@
+---
+layout: base
+title: Learn
+permalink: /learn/
+---
+{% assign done = site.concepts | where: "status", "written" | size %}
+{% assign all = site.concepts | size %}
+
+<div class="wrap">
+  <header class="page-head">
+    <h1 class="page-title">Learn</h1>
+    <p class="page-blurb">
+      Every concept in the notebook, grouped by category.
+      {{ done }} of {{ all }} are written.
+    </p>
+  </header>
+
+  {% for s in site.data.sections %}
+    {% include concept-list.html section=s %}
+  {% endfor %}
+</div>

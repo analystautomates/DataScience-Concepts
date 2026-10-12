@@ -1,0 +1,63 @@
+# ---------------------------------------------------------------
+# Site settings. Edit these, then commit.
+# NOTE: changes to this file only appear after GitHub rebuilds the
+# site (about a minute). If you preview locally, restart the server.
+# ---------------------------------------------------------------
+
+title: Analyst Automates
+tagline: Data Science, But Make It Make Sense
+description: >-
+  A public learning notebook. I'm a data analyst working toward data
+  science, and I write up each concept as I learn it.
+author: Analyst Automates
+
+# Your GitHub profile or repo URL. Used by the nav and footer.
+github_url: https://github.com/YOUR-USERNAME
+
+# ---------------------------------------------------------------
+# URL settings
+#
+# If your repo is named  YOUR-USERNAME.github.io  leave both blank.
+# If your repo is named  analyst-automates  (a project site), set:
+#     baseurl: "/analyst-automates"
+#     url: "https://YOUR-USERNAME.github.io"
+# ---------------------------------------------------------------
+baseurl: ""
+url: ""
+
+# ---------------------------------------------------------------
+# Navigation. Add or remove an item here and it updates everywhere.
+# ---------------------------------------------------------------
+nav:
+  - name: Home
+    link: /
+  - name: Learn
+    link: /learn/
+  - name: Projects
+    link: /projects/
+  - name: About
+    link: /about/
+
+# ---------------------------------------------------------------
+# Collections: every file in _concepts/ becomes a page at
+# /learn/<filename>/
+# ---------------------------------------------------------------
+collections:
+  concepts:
+    output: true
+    permalink: /learn/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: concepts
+    values:
+      layout: concept
+
+# Build settings
+markdown: kramdown
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor

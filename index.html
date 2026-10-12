@@ -1,0 +1,43 @@
+---
+layout: base
+---
+{% assign done = site.concepts | where: "status", "written" | size %}
+{% assign all = site.concepts | size %}
+
+<div class="wrap">
+
+  <section class="hero">
+    <p class="hero-kicker">{{ site.tagline }}</p>
+    <h1 class="hero-title">I'm learning data science in public, one concept at a time.</h1>
+    <p class="hero-lede">
+      I work as a data analyst. Everything below is a concept I want to
+      understand properly, written up in my own words once it clicks.
+      Each square is one concept — solid means it's written, hollow
+      means I haven't got there yet.
+    </p>
+
+    <div class="coverage">
+      <ul class="strip">
+        {% for s in site.data.sections %}
+          {% assign items = site.concepts | where: "section", s.id | sort: "order" %}
+          {% for c in items %}
+            <li>
+              <a class="tile {% if c.status == 'written' %}is-written{% endif %}"
+                 style="--cat: {{ s.color }}"
+                 title="{{ c.title }} — {{ s.name }}"
+                 href="{{ c.url | relative_url }}">
+                <span class="sr-only">{{ c.title }} — {% if c.status == 'written' %}written{% else %}not written yet{% endif %}</span>
+              </a>
+            </li>
+          {% endfor %}
+        {% endfor %}
+      </ul>
+      <p class="coverage-count">{{ done }} of {{ all }} written</p>
+    </div>
+  </section>
+
+  {% for s in site.data.sections %}
+    {% include concept-list.html section=s %}
+  {% endfor %}
+
+</div>
