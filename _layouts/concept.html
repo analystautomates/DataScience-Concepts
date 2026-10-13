@@ -1,0 +1,64 @@
+---
+layout: base
+---
+{% assign sec = site.data.sections | where: "id", page.section | first %}
+{% assign siblings = site.concepts | where: "section", page.section | sort: "order" %}
+
+{% assign idx = 0 %}
+{% for c in siblings %}
+  {% if c.url == page.url %}{% assign idx = forloop.index0 %}{% endif %}
+{% endfor %}
+{% assign prev_i = idx | minus: 1 %}
+{% assign next_i = idx | plus: 1 %}
+
+<div class="wrap" style="--cat: {{ sec.color | default: '#0072B2' }}">
+
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a href="{{ '/learn/' | relative_url }}">Learn</a>
+    <span class="crumb-sep" aria-hidden="true">/</span>
+    <span class="crumb-cat">{{ sec.name }}</span>
+  </nav>
+
+  <header class="page-head">
+    <h1 class="page-title">{{ page.title }}</h1>
+    {% if page.blurb %}<p class="page-blurb">{{ page.blurb }}</p>{% endif %}
+  </header>
+
+  {% if page.status != "written" %}
+    <div class="soon">
+      <p class="soon-title">Coming Soon</p>
+      <p>
+        I haven't written this one up yet. It's on the list —
+        number {{ page.order }} in {{ sec.name }}.
+      </p>
+      <p class="soon-edit">
+        <a href="{{ site.github_url }}/edit/main/{{ page.path }}" rel="noopener">Write it now</a>
+      </p>
+    </div>
+  {% endif %}
+
+  <div class="prose">
+    {{ content }}
+  </div>
+
+  <nav class="pager" aria-label="More in this section">
+    {% if idx > 0 %}
+      {% assign prev = siblings[prev_i] %}
+      <a class="pager-link" href="{{ prev.url | relative_url }}">
+        <span class="pager-dir">Previous</span>
+        <span class="pager-name">{{ prev.title }}</span>
+      </a>
+    {% else %}
+      <span></span>
+    {% endif %}
+
+    {% if next_i < siblings.size %}
+      {% assign next = siblings[next_i] %}
+      <a class="pager-link pager-next" href="{{ next.url | relative_url }}">
+        <span class="pager-dir">Next</span>
+        <span class="pager-name">{{ next.title }}</span>
+      </a>
+    {% endif %}
+  </nav>
+
+</div>

@@ -1,0 +1,14 @@
+{% assign done = site.concepts | where: "status", "written" | size %}
+{% assign all = site.concepts | size %}
+
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <p class="foot-note">
+      {{ site.title }} — a learning notebook in progress.
+      {{ done }} of {{ all }} concepts written so far.
+    </p>
+    <p class="foot-note">
+      <a href="{{ site.github_url }}" rel="noopener">Source on GitHub</a>
+    </p>
+  </div>
+</footer>

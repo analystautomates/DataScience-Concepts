@@ -1,0 +1,25 @@
+{% comment %}
+  Renders one category and its concepts.
+  Usage:  {% include concept-list.html section=s %}
+{% endcomment %}
+
+{% assign items = site.concepts | where: "section", include.section.id | sort: "order" %}
+
+<section class="cat" style="--cat: {{ include.section.color }}">
+  <div class="cat-head">
+    <h2 class="cat-name">{{ include.section.name }}</h2>
+    <p class="cat-blurb">{{ include.section.blurb }}</p>
+  </div>
+
+  <ul class="cat-items">
+    {% for c in items %}
+      <li class="cat-item {% if c.status == 'written' %}is-written{% endif %}">
+        <a href="{{ c.url | relative_url }}">
+          <span class="dot" aria-hidden="true"></span>
+          <span class="cat-item-name">{{ c.title }}</span>
+          <span class="cat-item-blurb">{{ c.blurb }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</section>

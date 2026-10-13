@@ -1,0 +1,25 @@
+# The four categories. Order here = order on the site.
+#
+# id     must match the "section:" value in the concept files
+# color  Okabe-Ito colourblind-safe palette
+# blurb  one line, shown under the category name
+
+- id: ml-fundamentals
+  name: Machine Learning Fundamentals
+  color: "#0072B2"
+  blurb: How a model learns a pattern, and how you set the problem up.
+
+- id: model-evaluation
+  name: Model Evaluation
+  color: "#009E73"
+  blurb: Deciding whether a model is actually any good.
+
+- id: statistics
+  name: Statistics
+  color: "#CC79A7"
+  blurb: The reasoning underneath every number I report.
+
+- id: time-series
+  name: Time Series
+  color: "#E69F00"
+  blurb: What changes when your data has an order to it.
