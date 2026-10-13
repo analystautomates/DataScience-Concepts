@@ -12,7 +12,7 @@ description: >-
 author: Analyst Automates
 
 # Your GitHub profile or repo URL. Used by the nav and footer.
-github_url: https://analystautomates.github.io/DataScience-Concepts
+github_url: https://github.com/analystautomates/DataScience-Concepts
 
 # ---------------------------------------------------------------
 # URL settings
@@ -22,8 +22,8 @@ github_url: https://analystautomates.github.io/DataScience-Concepts
 #     baseurl: "/analyst-automates"
 #     url: "https://YOUR-USERNAME.github.io"
 # ---------------------------------------------------------------
-baseurl: "https://analystautomates.github.io/DataScience-Concepts/"
-url: ""
+baseurl: "/DataScience-Concepts"
+url: "https://analystautomates.github.io"
 
 # ---------------------------------------------------------------
 # Navigation. Add or remove an item here and it updates everywhere.
